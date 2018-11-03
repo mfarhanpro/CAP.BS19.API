@@ -1,0 +1,8 @@
+# conpiled ouput
+bin
+obj
+
+# IDE - VSCODE
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
