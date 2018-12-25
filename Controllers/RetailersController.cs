@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CAP.BS19.API.Data;
 using CAP.BS19.API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CAP.BS19.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class RetailersController : ControllerBase

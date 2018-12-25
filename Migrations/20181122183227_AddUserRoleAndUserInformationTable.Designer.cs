@@ -4,14 +4,16 @@ using CAP.BS19.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CAP.BS19.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20181122183227_AddUserRoleAndUserInformationTable")]
+    partial class AddUserRoleAndUserInformationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,9 +160,9 @@ namespace CAP.BS19.API.Migrations
 
                     b.Property<DateTime>("EntryTime");
 
-                    b.Property<bool>("IsActive");
+                    b.Property<string>("IsActive");
 
-                    b.Property<bool>("IsDeleted");
+                    b.Property<string>("IsDeleted");
 
                     b.Property<string>("LoginUserName");
 
@@ -169,21 +171,13 @@ namespace CAP.BS19.API.Migrations
 
                     b.Property<int?>("OfficeId");
 
-                    b.Property<byte[]>("PasswordHash");
-
-                    b.Property<byte[]>("PasswordSalt");
+                    b.Property<string>("Password");
 
                     b.Property<string>("Phone");
 
-                    b.Property<int?>("UserRoleId");
+                    b.Property<int?>("RoleId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CompanyId");
-
-                    b.HasIndex("OfficeId");
-
-                    b.HasIndex("UserRoleId");
 
                     b.ToTable("UserInformation");
                 });
@@ -241,21 +235,6 @@ namespace CAP.BS19.API.Migrations
                     b.HasOne("CAP.BS19.API.Models.Region", "Region")
                         .WithMany()
                         .HasForeignKey("RegionId");
-                });
-
-            modelBuilder.Entity("CAP.BS19.API.Models.UserInformation", b =>
-                {
-                    b.HasOne("CAP.BS19.API.Models.Company", "Company")
-                        .WithMany()
-                        .HasForeignKey("CompanyId");
-
-                    b.HasOne("CAP.BS19.API.Models.Office", "Office")
-                        .WithMany()
-                        .HasForeignKey("OfficeId");
-
-                    b.HasOne("CAP.BS19.API.Models.UserRole", "UserRole")
-                        .WithMany()
-                        .HasForeignKey("UserRoleId");
                 });
 #pragma warning restore 612, 618
         }

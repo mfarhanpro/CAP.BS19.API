@@ -11,5 +11,7 @@ namespace CAP.BS19.API.Data
         public DbSet<Region> Regions { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Retailer> Retailers { get; set; }
+        public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<UserInformation> UserInformation { get; set; }
     }
 }
